@@ -1,7 +1,7 @@
 <br/>
 <p align="center">
   <a href="https://github.com/bennymeg/ngx-electron-titlebar">
-    <img src="images/logo.png" alt="Logo" width="80" height="80">
+    <img src="https://raw.githubusercontent.com/bennymeg/ngx-electron-titlebar/master/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">NGX Electron Titlebar</h3>
@@ -27,13 +27,13 @@
 
 ## About The Project
 
-![Screen Shot](images/screenshot.png)
+![Screen Shot](https://raw.githubusercontent.com/bennymeg/ngx-electron-titlebar/master/images/screenshot.png)
 
 Over the last couple of years many applications started to adopt transparent design language. Unfortunately, in Electron applications, this means you have to use frameless browser window, which means tou loose the application title bar. this project aims to solve this issue by providing high fidelity, cross platform title bar.
 
 ## Getting Started
 
-This project work with Electron application that are powered by Angular. We suggest using [NX](https://github.com/nrwl/nx) + [Nx Electron](https://github.com/bennymeg/nx-electron) for this purpose.
+This project work with Electron application that are powered by Angular. We suggest using [Nx Electron](https://github.com/bennymeg/nx-electron) for this purpose.
 
 ### Installation
 
