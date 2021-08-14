@@ -1,0 +1,49 @@
+.card {
+    width: 100%;
+    height: 20em;
+    border: 2px;
+    border-radius: 6px;
+    box-shadow: 1px 2px 8px #282828;
+}
+
+
+.social {
+    margin: 24px;
+    text-align: center;
+    justify-content: center;
+}
+
+.github-btn {
+  color: black;
+  -o-transition:color .18s ease-in-out;
+  -ms-transition:color .18s ease-in-out;
+  -moz-transition:color .18s ease-in-out;
+  -webkit-transition:color .18s ease-in-out;
+  transition:color .18s ease-in-out;
+}
+
+.github-btn:hover { 
+    color: #6e5494;
+}
+
+.npm-btn {
+    color: black;
+    -o-transition:color .18s ease-in-out;
+    -ms-transition:color .18s ease-in-out;
+    -moz-transition:color .18s ease-in-out;
+    -webkit-transition:color .18s ease-in-out;
+    transition:color .18s ease-in-out;
+}
+  
+.npm-btn:hover { 
+    color: #cb3837;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    text-align: center;
+    padding: 16px;
+}
