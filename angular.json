@@ -122,6 +122,10 @@
               "devServerTarget": "ngx-electron-titlebar:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
     },
