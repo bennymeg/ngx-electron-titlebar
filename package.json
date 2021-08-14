@@ -13,6 +13,8 @@
     "transparent",
     "window"
   ],
+  "repository": "https://github.com/bennymeg/ngx-electron-titlebar",
+  "homepage": "https://bennymeg.github.io/ngx-electron-titlebar/",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",

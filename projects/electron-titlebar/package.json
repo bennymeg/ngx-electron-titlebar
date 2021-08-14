@@ -3,7 +3,9 @@
   "description": "Custom titlebar library for Electron & Angular applications",
   "author": "Benny Megidish",
   "license": "Apache 2.0",
-  "version": "0.1.0",
+  "version": "0.1.1",
+  "repository": "https://github.com/bennymeg/ngx-electron-titlebar",
+  "homepage": "https://bennymeg.github.io/ngx-electron-titlebar/",
   "keywords": [
     "angular",
     "electron",
