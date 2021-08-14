@@ -47,7 +47,7 @@ npm install ngx-electron-titlebar
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ElectronTitlebarModule } from 'projects/electron-titlebar/src/public-api';
+import { ElectronTitlebarModule } from 'ngx-electron-titlebar';
 
 import { AppComponent } from './app.component';
 
