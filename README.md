@@ -77,12 +77,12 @@ export class AppModule { }
 ```
 
 ## Options
-- **theme:** 'light' | 'dark' (default: 'dark')  -  theme style
+- **theme:** 'light' | 'dark' (default: 'light')  -  theme style
 - **draggable:** boolean (default: true)        -  enables/disables the -webkit-app-region CSS property on the root element. - Allows frameless windows to be dragged in an electron application
 - **fixed:** boolean (default: false)            -  affixes to the top and floats above the rest of the content so only the - buttons and title are visible. Ignores transparent rule
-- **os:** 'mac' | 'win' | 'default' (default: 'mac')  -  titlebar style (defaults to current OS, or default if unrecognized)
+- **os:** 'mac' | 'win' | 'default' (default: 'default')  -  titlebar style (defaults to current OS, or default if unrecognized)
 - **tall:** boolean (default: false)             -  makes the titlebar taller than usual, with the controls slightly inset (mac - only)
-- **title:** string (default: 'Title')           -  app title
+- **title:** string (default: '')           -  app title
 - **transparent:** boolean (default: false)     -  transparent background for an overlay effect
 - **rtl:** boolean (default: false)              -  right to left alignment
 
