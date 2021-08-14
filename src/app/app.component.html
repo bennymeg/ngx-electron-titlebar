@@ -8,7 +8,7 @@
 </div>
 
 <div class="social">
-  <a href="https://github.com/bennymeg/NgxElectronTitlebar">
+  <a href="https://github.com/bennymeg/ngx-electron-titlebar">
     <fa-icon class="github-btn" [icon]="faGithub" size="2x" [spin]="false"></fa-icon>
   </a>
   &nbsp;&nbsp;
@@ -18,18 +18,18 @@
 </div>
 
 <div style="margin-top: 32px; margin-left: 16px;">
-  <span style="padding-right: 25px;">Theme:</span>
+  <span style="padding-right: 26px;">Theme:</span>
   <mat-radio-group aria-label="Theme" name="Theme" [(value)]="theme">
-    <mat-radio-button value="light" (change)="theme='light'">Light</mat-radio-button>&nbsp;
-    <mat-radio-button value="dark" (change)="theme='dark'">Dark</mat-radio-button>&nbsp;
+    <mat-radio-button value="dark" (change)="theme='dark'">Dark</mat-radio-button>&nbsp;&nbsp;
+    <mat-radio-button value="light" (change)="theme='light'">Light</mat-radio-button>&nbsp;&nbsp;
   </mat-radio-group>
 
   <br/>
 
   <span style="padding-right: 16px;">OS Style:</span>
   <mat-radio-group aria-label="OS" name="OS" [(value)]="os">
-    <mat-radio-button value="mac" (change)="os='mac'">Mac</mat-radio-button>&nbsp;&nbsp;
-    <mat-radio-button value="win" (change)="os='win'">Windows</mat-radio-button>&nbsp;&nbsp;
+    <mat-radio-button value="mac" (change)="os='mac'" style="padding-right: 2px;">Mac</mat-radio-button>&nbsp;&nbsp;
+    <mat-radio-button value="win" (change)="os='win'" style="padding-right: 2px;">Windows</mat-radio-button>&nbsp;&nbsp;
     <mat-radio-button value="default" (change)="os='default'">Default</mat-radio-button>&nbsp;&nbsp;
   </mat-radio-group>
 
