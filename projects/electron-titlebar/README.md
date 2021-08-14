@@ -13,7 +13,7 @@
     <a href="https://github.com/bennymeg/ngx-electron-titlebar"><strong>Explore the docs »</strong></a>
     <br/>
     <br/>
-    <a href="https://github.com/bennymeg/ngx-electron-titlebar">View Demo</a>
+    <a href="https://bennymeg.github.io/ngx-electron-titlebar/">View Demo</a>
     .
     <a href="https://github.com/bennymeg/ngx-electron-titlebar/issues">Report Bug</a>
     .
