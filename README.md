@@ -31,6 +31,8 @@
 
 Over the last couple of years many applications started to adopt transparent design language. Unfortunately, in Electron applications, this means you have to use frameless browser window, which means tou loose the application title bar. this project aims to solve this issue by providing high fidelity, cross platform title bar.
 
+> _NOTE:_ this library is design to work with Electron, but it will work gracefully on any standalone Angular application.
+
 ## Getting Started
 
 This project work with Electron application that are powered by Angular. We suggest using [Nx Electron](https://github.com/bennymeg/nx-electron) for this purpose.
