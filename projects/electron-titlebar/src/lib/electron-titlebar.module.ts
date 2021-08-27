@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ElectronTitlebarComponent } from './electron-titlebar.component';
+import { NgxElectronModule } from 'ngx-electron';
 
 
 
@@ -9,7 +10,8 @@ import { ElectronTitlebarComponent } from './electron-titlebar.component';
     ElectronTitlebarComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    NgxElectronModule
   ],
   exports: [
     ElectronTitlebarComponent

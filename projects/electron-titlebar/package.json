@@ -17,10 +17,11 @@
   ],
   "peerDependencies": {
     "@angular/common": ">= 9",
-    "@angular/core": ">= 9"
+    "@angular/core": ">= 9",
+    "electron": ">= 9",
+    "ngx-electron": "^2.2.0"
   },
   "dependencies": {
-    "ngx-electron": "^2.2.0",
     "tslib": "^2.0.0"
   }
 }

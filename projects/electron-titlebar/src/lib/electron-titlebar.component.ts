@@ -1,4 +1,5 @@
 import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
+import { ElectronService } from 'ngx-electron';
 
 @Component({
   selector: 'ngx-electron-titlebar',
@@ -23,23 +24,19 @@ export class ElectronTitlebarComponent implements OnInit {
   altPressed: boolean = false;
   isFullScreen: boolean = false;
 
-  constructor() { }
+  constructor(private _electronService: ElectronService) { }
 
   ngOnInit(): void {
     // Set proper style
-		// if (!['mac','win','default'].includes(this.style)) {
-    //   switch (process.platform) {
-    //     case 'darwin':
-    //       this.style = 'mac';
-    //       break;
-    //     case 'win32':
-    //       this.style = 'win';
-    //       break;
-    //     default:
-    //       this.style = 'default'
-    //       break;
-    //   }
-		// }
+		if (!['mac','win','default'].includes(this.os)) {
+      if (this._electronService.isMacOS) {
+        this.os = 'mac';
+      } else if (this._electronService.isWindows) {
+        this.os = 'win';
+      } else {
+        this.os = 'default'
+      }
+		}
   }
 
   @HostListener('window:keydown', ['$event'])
@@ -57,22 +54,45 @@ export class ElectronTitlebarComponent implements OnInit {
   }
 
   onCloseClicked() { 
+console.log(this._electronService);
+
+
+    if (this._electronService.isElectronApp) {
+      this._electronService.ipcRenderer.invoke('close');
+    }
+
     this.onClose.emit('close'); 
   }
 	
 	onMinimizeClicked() { 
+    if (this._electronService.isElectronApp) {
+      this._electronService.ipcRenderer.invoke('minimize');
+    }
+
     this.onMinimize.emit('minimize'); 
   }
 	
 	onMaximizeClicked() {
 		if (this.os === 'mac') {
 			if (this.altPressed && !this.isFullScreen) {
+        if (this._electronService.isElectronApp) {
+          this._electronService.ipcRenderer.invoke('maximize');
+        }
+
         this.onMaximize.emit('maximize');
       } else {
+        if (this._electronService.isElectronApp) {
+          this._electronService.ipcRenderer.invoke('fullscreen');
+        }
+
 				this.isFullScreen = !this.isFullScreen;
 				this.onFullScreen.emit('fullscreen');
 			}
 		} else {
+      if (this._electronService.isElectronApp) {
+        this._electronService.ipcRenderer.invoke('maximize');
+      }
+
 			this.isFullScreen = !this.isFullScreen;
 			this.onMaximize.emit('maximize');
 		}
