@@ -1,5 +1,6 @@
-import { Component, Input, OnInit, Output, EventEmitter, HostListener } from '@angular/core';
-import { ElectronService } from 'ngx-electron';
+import { Component, Input, OnInit, Output, EventEmitter, HostListener, Inject } from '@angular/core';
+import { ElectronBridgeFactory, isBridgeExposed, isElectronApp } from 'ngx-electron-bridge';
+
 
 @Component({
   selector: 'ngx-electron-titlebar',
@@ -24,18 +25,12 @@ export class ElectronTitlebarComponent implements OnInit {
   altPressed: boolean = false;
   isFullScreen: boolean = false;
 
-  constructor(private _electronService: ElectronService) { }
+  constructor(@Inject(ElectronBridgeFactory('ElectronTitlebarBridge')) private _electronBridge: any) { }
 
   ngOnInit(): void {
     // Set proper style
 		if (!['mac','win','default'].includes(this.os)) {
-      if (this._electronService.isMacOS) {
-        this.os = 'mac';
-      } else if (this._electronService.isWindows) {
-        this.os = 'win';
-      } else {
-        this.os = 'default'
-      }
+      this.getPlatform();
 		}
   }
 
@@ -53,20 +48,33 @@ export class ElectronTitlebarComponent implements OnInit {
     }
   }
 
+  private async getPlatform() {
+    const platform: string = isElectronApp && isBridgeExposed ? await this._electronBridge.platform() : undefined;
+
+    switch (platform) {
+      case "darwin":
+        this.os = 'mac';
+        break;
+      case "win32":
+        this.os = 'win';
+        break;
+      default:
+        this.os = 'default';
+        break;
+    }
+  }
+
   onCloseClicked() { 
-console.log(this._electronService);
-
-
-    if (this._electronService.isElectronApp) {
-      this._electronService.ipcRenderer.invoke('close');
+    if (isElectronApp && isBridgeExposed) {
+      this._electronBridge.close();
     }
 
     this.onClose.emit('close'); 
   }
 	
 	onMinimizeClicked() { 
-    if (this._electronService.isElectronApp) {
-      this._electronService.ipcRenderer.invoke('minimize');
+    if (isElectronApp && isBridgeExposed) {
+      this._electronBridge.minimize();
     }
 
     this.onMinimize.emit('minimize'); 
@@ -75,22 +83,22 @@ console.log(this._electronService);
 	onMaximizeClicked() {
 		if (this.os === 'mac') {
 			if (this.altPressed && !this.isFullScreen) {
-        if (this._electronService.isElectronApp) {
-          this._electronService.ipcRenderer.invoke('maximize');
+        if (isElectronApp && isBridgeExposed) {
+          this._electronBridge.maximize();
         }
 
         this.onMaximize.emit('maximize');
       } else {
-        if (this._electronService.isElectronApp) {
-          this._electronService.ipcRenderer.invoke('fullscreen');
+        if (isElectronApp && isBridgeExposed) {
+          this._electronBridge.fullscreen();
         }
 
 				this.isFullScreen = !this.isFullScreen;
 				this.onFullScreen.emit('fullscreen');
 			}
 		} else {
-      if (this._electronService.isElectronApp) {
-        this._electronService.ipcRenderer.invoke('maximize');
+      if (isElectronApp && isBridgeExposed) {
+        this._electronBridge.maximize();
       }
 
 			this.isFullScreen = !this.isFullScreen;

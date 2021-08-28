@@ -4,7 +4,8 @@
   "lib": {
     "entryFile": "src/public-api.ts",
     "umdModuleIds": {
-      "ngx-electron": "ngx-electron"
+      "ngx-electron-bridge": "ngx-electron-bridge",
+      "electron": "electron"
     }
   }
 }

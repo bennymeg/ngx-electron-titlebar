@@ -3,7 +3,7 @@
   "description": "Custom titlebar library for Electron & Angular applications",
   "author": "Benny Megidish",
   "license": "Apache 2.0",
-  "version": "0.1.1",
+  "version": "0.3.0",
   "repository": "https://github.com/bennymeg/ngx-electron-titlebar",
   "homepage": "https://bennymeg.github.io/ngx-electron-titlebar/",
   "keywords": [
@@ -15,11 +15,14 @@
     "transparent",
     "window"
   ],
+  "browser": {
+    "electron": false
+  },
   "peerDependencies": {
     "@angular/common": ">= 9",
     "@angular/core": ">= 9",
     "electron": ">= 9",
-    "ngx-electron": "^2.2.0"
+    "ngx-electron-bridge": "^2.0.0"
   },
   "dependencies": {
     "tslib": "^2.0.0"

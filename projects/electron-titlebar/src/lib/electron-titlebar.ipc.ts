@@ -1,55 +1,78 @@
-import { IpcMain, BrowserWindow } from 'electron';
+import { ipcMain, BrowserWindow } from 'electron';
+import { ContextBridgeService } from 'ngx-electron-bridge';
+
+
+export class ElectronTitlebarContextBridge {
+  static contextBridgeService = new ContextBridgeService();
+
+  private constructor() {}
+
+  static registerContextBridges() {
+    ElectronTitlebarContextBridge.contextBridgeService
+      .addIpcBridge("enterFullscreen", "enter-full-screen")
+      .addIpcBridge("leaveFullscreen", "leave-full-screen")
+      .addIpcBridge("fullscreen", "fullscreen")
+      .addIpcBridge("maximize", "maximize")
+      .addIpcBridge("unmaximize", "unmaximize")
+      .addIpcBridge("minimize", "minimize")
+      .addIpcBridge("close", "close")
+      .addIpcBridge("updatePageTitle", "update-page-title")
+      .expose('ElectronTitlebarBridge');
+  }
+}
 
 export class ElectronTitlebarIPC {
-  constructor(private _ipcMain: IpcMain, private _browserWindow: BrowserWindow) { 
-    this._ipcMain.handle('enter-full-screen', async (event, ...args) => {
-      this._browserWindow.setFullScreen(true);
+  private constructor() {}
+
+  static registerHandlers(browserWindow: BrowserWindow) {
+    ipcMain.handle('enter-full-screen', async (event, ...args) => {
+      browserWindow.setFullScreen(true);
       return true;
     });
 
-    this._ipcMain.handle('leave-full-screen', async (event, ...args) => {
-      this._browserWindow.setFullScreen(false);
+    ipcMain.handle('leave-full-screen', async (event, ...args) => {
+      browserWindow.setFullScreen(false);
       return true;
     });
 
-    this._ipcMain.handle('fullscreen', async (event, ...args) => {
-      const fullscreen: boolean = this._browserWindow.isFullScreen() || true;
-      this._browserWindow.setFullScreen(!fullscreen);
+    ipcMain.handle('fullscreen', async (event, ...args) => {
+      const fullscreen: boolean = browserWindow.isFullScreen() || true;
+      browserWindow.setFullScreen(!fullscreen);
       return true;
     });
 
-    this._ipcMain.handle('maximize', async (event, ...args) => {
-      if (this._browserWindow.isMaximized()) {
-        this._browserWindow.unmaximize();
+    ipcMain.handle('maximize', async (event, ...args) => {
+      if (browserWindow.isMaximized()) {
+        browserWindow.unmaximize();
       } else {
-        this._browserWindow.maximize();
+        browserWindow.maximize();
       }
 
       return true;
     });
 
-    this._ipcMain.handle('unmaximize', async (event, ...args) => {
-      if (this._browserWindow.isMaximized()) {
-        this._browserWindow.unmaximize();
+    ipcMain.handle('unmaximize', async (event, ...args) => {
+      if (browserWindow.isMaximized()) {
+        browserWindow.unmaximize();
       } else {
-        this._browserWindow.maximize();
+        browserWindow.maximize();
       }
       
       return true;
     });
 
-    this._ipcMain.handle('minimize', async (event, ...args) => {
-      this._browserWindow.minimize();
+    ipcMain.handle('minimize', async (event, ...args) => {
+      browserWindow.minimize();
       return true;
     });
 
-    this._ipcMain.handle('close', async (event, ...args) => {
-      this._browserWindow.close();
+    ipcMain.handle('close', async (event, ...args) => {
+      browserWindow.close();
       return true;
     });
 
-    this._ipcMain.handle('update-page-title', async (event, ...args) => {
-      this._browserWindow.setTitle(args[0]);
+    ipcMain.handle('update-page-title', async (event, ...args) => {
+      browserWindow.setTitle(args[0]);
       return true;
     });
   }

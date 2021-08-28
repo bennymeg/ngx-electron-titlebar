@@ -3,6 +3,11 @@
 	z-index: 9999;
 	
 	* { box-sizing: inherit; }
+
+	.windowbar-controls-container {
+		display: flex;
+		flex-direction: row;
+	}
 	
 	&.draggable {
 		-webkit-app-region: drag;
@@ -352,6 +357,10 @@
 
 // right to left styles
 .windowbar[dir="rtl"] {
+	.windowbar-controls-container {
+		flex-direction: row-reverse;
+	}
+
 	&.wb-mac {
 		.windowbar-controls {
 			right: 0;

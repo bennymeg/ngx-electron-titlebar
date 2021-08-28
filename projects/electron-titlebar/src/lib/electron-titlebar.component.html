@@ -10,7 +10,7 @@
   <!-- controls -->
   <div class="windowbar-controls" [ngSwitch]="os" >
     <!-- mac controls -->
-    <div *ngSwitchCase="'mac'">
+    <div *ngSwitchCase="'mac'" class="windowbar-controls-container">
       <div class="windowbar-close" (click)="onCloseClicked()">
         <svg x="0px" y="0px" viewBox="0 0 6 6">
           <polygon fill="#860006" points="6,1 6,0 5,0 3,2 1,0 0,0 0,1 2,3 0,5 0,6 1,6 3,4 5,6 6,6 6,5 4,3"></polygon>
@@ -37,7 +37,7 @@
     </div>
 
     <!-- windows controls -->
-    <div *ngSwitchCase="'win'">
+    <div *ngSwitchCase="'win'" class="windowbar-controls-container">
       <div class="windowbar-minimize" (click)="onMinimizeClicked()">
         <svg x="0px" y="0px" viewBox="0 0 10 1">
           <rect fill="#000000" width="10" height="1"></rect>
@@ -64,7 +64,7 @@
     </div>
 
     <!-- default controls -->
-    <div *ngSwitchDefault>
+    <div *ngSwitchDefault class="windowbar-controls-container">
       <div class="windowbar-minimize" (click)="onMinimizeClicked()">
         <svg x="0px" y="0px" viewBox="0 0 10 10">
           <rect fill="#000000" width="10" height="1" x="0" y="9"></rect>

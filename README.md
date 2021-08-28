@@ -52,7 +52,7 @@ npm install ngx-electron-titlebar
 
 ## Usage
 
-1. import the module
+1. Import the module - _[renderer process]_
 ```ts
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -75,7 +75,7 @@ import { AppComponent } from './app.component';
 export class AppModule { }
 ```
 
-2. add the component to you application html
+2. Add the component to you application html - _[renderer process]_
 ```html
   <ngx-electron-titlebar></ngx-electron-titlebar>
   <!-- or with all the options -->
@@ -83,6 +83,23 @@ export class AppModule { }
     [theme]="theme" [os]="os" [title]="title" [draggable]="draggable" [fixed]="fixed"
     [tall]="tall" [transparent]="transparent" [rtl]="rtl">
   </ngx-electron-titlebar>
+```
+
+3. Register context bridges - _[main process - preload script]_
+```ts
+import { ElectronTitlebarContextBridge } from 'ngx-electron-titlebar';
+
+ElectronTitlebarContextBridge.registerContextBridges();
+```
+
+4. Register window event handlers - _[main process]_
+```ts
+import { ElectronTitlebarIPC } from 'ngx-electron-titlebar';
+
+mainWindow.once('ready-to-show', () => {
+  ElectronTitlebarIPC.registerHandlers(mainWindow);
+  mainWindow.show();
+});
 ```
 
 ## Options
